@@ -1,19 +1,57 @@
-#contenedor-productos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+/* Estilos globales: colores,
+fuentes,
+botones y estructura base */
+    :root {
+    --color-fondo: #575757;
+    --color-texto: #f5f5f5;
+    --color-primario: #facc15;
+    --color-secundario: #222;
+
 }
 
-.card-producto {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 2px solid;
-    width: 300px;
-    height: 300px;
+/* Configuración base */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    margin: 0;
+    padding: 0;
+}
+
+/* Botones */
+button,
+.btn {
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+    border: none;
+    padding: 10px 20px;
     margin: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.card-producto img {
-    width: 150px;
+button:hover,
+.btn:hover {
+    background-color: #ffe44d;
+}
+
+/* Cabecera y navegación */
+header {
+    text-align: center;
+    padding: 15px;
+    background-color: var(--color-secundario);
+}
+
+nav {
+    text-align: center;
+    padding: 10px;
+    background-color: var(--color-secundario);
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--color-texto);
+    margin: 0 10px;
+    font-weight: bold;
 }
