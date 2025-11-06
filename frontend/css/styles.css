@@ -1,12 +1,11 @@
 /* Estilos globales: colores,
 fuentes,
 botones y estructura base */
-    :root {
-    --color-fondo: #575757;
-    --color-texto: #f5f5f5;
+:root {
+    --color-fondo: #f3f4f6;
+    --color-texto: #111827;
     --color-primario: #facc15;
     --color-secundario: #222;
-
 }
 
 /* Configuración base */
@@ -33,7 +32,7 @@ button,
 
 button:hover,
 .btn:hover {
-    background-color: #ffe44d;
+    background-color: #ffe44d; 
 }
 
 /* Cabecera y navegación */
@@ -54,4 +53,12 @@ nav a {
     color: var(--color-texto);
     margin: 0 10px;
     font-weight: bold;
+}
+/* Marca de agua con los nombres */
+#marca-agua {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    font-size: 0.8rem;
+    color: rgb(0, 0, 0);
 }

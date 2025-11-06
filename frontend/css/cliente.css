@@ -1,6 +1,7 @@
 /* Estilos para las pantallas del cliente,
 Centrado general */
 body {
+    
     text-align: center;
     min-height: 10vh;
     display: flex;
@@ -19,6 +20,11 @@ header {
     padding: 20px;
     text-align: center;
     z-index: 10;
+}
+
+#bienvenida{
+    margin-top: 200px;
+    text-align: center;
 }
 
 /* Botón Admin (esquina superior derecha) */
@@ -55,14 +61,6 @@ input {
     margin-top: 15px;
 }
 
-/* Marca de agua con los nombres */
-#marca-agua {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    font-size: 0.8rem;
-    color: rgba(250, 204, 21, 0.6);
-}
 
 /* Productos */
 
@@ -102,7 +100,7 @@ input {
 
 /* Ajuste para el contenido */
 main {
-    margin-top: 120px;
+    margin-top: 90px;
     text-align: center;
 }
 

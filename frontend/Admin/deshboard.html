@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administrador | ElectroComponentes</title>
+
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+    <header>
+        <h1>Panel de Admin</h1>
+        <nav>
+            <ul>
+                <a href="deshboard.html"><li>Ver</li></a>
+                <a href="consultar.html"><li>Consultar id</li></a>
+                <a href="crear.html"><li>Crear</li></a>
+                <a href="modificar.html"><li>Modificar</li></a>
+                <a href="eliminar.html"><li>Eliminar</li></a>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Lista de productos</h1>
+        <hr>
+        <div id="contenedor-productos"></div>
+    </main>
+
+    <script>
+        let contenedorProductos = document.getElementById("contenedor-productos");
+
+        async function obtenerProductos() {
+            try {
+                // Hacemos la peticion get a la url de nuestra api rest para obtener los productos
+                // Ojo! Para evitar que la politica de seguridad CORS bloquee nuestra peticion fetch a esa url, necesitamos habilitar CORS desde nuestra API Rest
+                let respuesta = await fetch("http://localhost:3000/products");
+                let respuestaFormato = await respuesta.json();
+
+                let productos = respuestaFormato.payload;
+
+                console.table(productos);
+
+                mostrarProductos(productos);
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        function mostrarProductos(productos) {
+            let htmlProductos = "";
+
+            productos.forEach(prod => {
+                htmlProductos += `
+                    <div class="card-producto">
+                        <img src="${prod.imagen}" alt="${prod.nombre}">
+                        <h3>${prod.nombre}</h3>
+                        <p>$${prod.precio}</p>
+                    </div>
+                `;
+
+                contenedorProductos.innerHTML = htmlProductos;
+            })
+        }
+
+        function init() {
+            obtenerProductos();
+        }
+
+        init();
+    </script>
+    <footer id="marca-agua">
+        Nombres: jose / Lautaro 
+    </footer>
+</body>
+
+</html>

@@ -24,7 +24,7 @@
         </nav>
     </header>
     <main>
-        <h1>Eliminar producto por id</h1>
+        <h1>Consultar producto por id</h1>
         <hr>
 
         <form id="getProduct-form">
@@ -51,7 +51,6 @@
 
             console.log("Formulario no enviado");
             console.log(event.target); // Con event target accedemos al evento que disparo el addEventListener
-
             // Vamos a guardar como objetos los valores del formulario HTML
             let formData = new FormData(event.target);
             console.log(formData); // FormData { idProd → "2" }
@@ -80,65 +79,34 @@
                 let producto = datos.payload[0];
                 console.table(producto);
 
-                // Creamos un nuevo boton a nuestro listado de ver producto
                 let htmlProducto = `
                     <li class="li-listados">
                         <img src="${producto.imagen}" alt="${producto.nombre}">
                         <p>Id: ${producto.id} / Nombre: ${producto.nombre} / <strong>Precio: ${producto.precio}</strong></p>
                     </li>
-                    <li class="li-botonera">
-                        <input type="submit" id="deleteProduct_button" value="Eliminar producto">
-                    </li>
                 `;
 
-                // Renderizamos el listado en la pagina
                 listaProductos.innerHTML = htmlProducto;
-
-
-                // Vamos a asignarle un evento click a nuestro boton "Eliminar producto"
-                let deleteProduct_button = document.getElementById("deleteProduct_button");
-
-                deleteProduct_button.addEventListener("click", event => {
-
-                    event.stopPropagation(); // Evitamos la propagacion de eventos
-
-                    let confirmacion = confirm("Queres eliminar este producto?");
-
-                    if (!confirmacion) {
-                        alert("Eliminacion cancelada");
-
-                    } else {
-                        eliminarProducto(idProd);
-                    }
-                });
-
-                async function eliminarProducto(id) {
-                    console.log(id); // Recibimos correctamente el id
-
-                    try {
-                        let response = await fetch(`http://localhost:3000/products/${id}`, {
-                            method: "DELETE"
-                        });
-
-                        let result = await response.json();
-
-                        if (response.ok) {
-                            alert(result.message);
-
-                            // Vaciamos la lista
-                            listaProductos.innerHTML = "";
-                        }
-
-                    } catch (error) {
-                        console.error("Error en la solicitud DELETE: ", error);
-                        alert("Ocurrio un error al eliminar un producto");
-                    }
-                }
 
             } catch (error) {
                 console.log(error);
             }
 
+            /*==========================
+                    Que es FormData?
+            ============================
+            A diferencia de un objeto JavaScript común, FormData está diseñado específicamente para manejar datos de formularios, incluyendo archivos, 
+            y puede ser creado desde un formulario HTML al pasar el elemento form al constructor new FormData(form)
+
+            FormData es una interfaz nativa de JavaScript que permite crear un conjunto de pares clave-valor 
+            que representan los campos de un formulario HTML y sus respectivos valores.
+
+            Esta clase se utiliza principalmente para capturar y enviar datos de formularios, 
+            ya sea mediante métodos como fetch o XMLHttpRequest, 
+            y se encarga de formatear los datos correctamente como multipart/form-data, 
+            estableciendo automáticamente los encabezados necesarios para el envío
+            */
+            // let respuesta = await fetch("http://localhost:3000/products/${idProducto}");
         });
 
     </script>
