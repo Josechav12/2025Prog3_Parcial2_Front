@@ -36,8 +36,8 @@
 
             <label for="typeProd">Categoria</label>
             <select name="type" id="typeProd" required>
-                <option value="LP">PIC</option>
-                <option value="CD">ARDUINO</option>
+                <option value="PIC">PIC</option>
+                <option value="ARDUINO">ARDUINO</option>
             </select>
 
             <label for="priceProd">Precio</label>
@@ -80,20 +80,21 @@
                     body: JSON.stringify(data)
                 });
 
+                console.log(response);
+                let result = await response.json();
+                
                 if (response.ok) {
-                    console.log(response);
-                    let result = await response.json();
-                    console.log(result.message);
-                    alert("Producto creado con exito");
-                }
 
+                    console.log(result.message);
+                    alert(`Producto creado con exito, con id: ${result.data.id}`);
+                } else {
+                    console.error(result.message);  
+                }
 
             } catch (error) {
                 console.error("Error al enviar los datos: ", error);
                 alert("Error al procesar la solicitud");
             }
-
-
         });
     </script>
     <footer id="marca-agua">
