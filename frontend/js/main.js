@@ -4,7 +4,7 @@ async function obtenerProductos() {
     try {
         // Hacemos la peticion get a la url de nuestra api rest para obtener los productos
         // Ojo! Para evitar que la politica de seguridad CORS bloquee nuestra peticion fetch a esa url, necesitamos habilitar CORS desde nuestra API Rest
-        let respuesta = await fetch("http://localhost:3000/products");
+        let respuesta = await fetch("http://localhost:3000/api/products");
         let respuestaFormato = await respuesta.json();
 
         let productos = respuestaFormato.payload;
