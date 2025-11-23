@@ -86,7 +86,7 @@
                 if (response.ok) {
 
                     console.log(result.message);
-                    alert(`Producto creado con exito, con id: ${result.data.id}`);
+                    alert(`Producto creado con éxito. Nuevo ID: ${result.productId}`);
                 } else {
                     console.error(result.message);  
                 }
@@ -96,6 +96,7 @@
                 alert("Error al procesar la solicitud");
             }
         });
+        
     </script>
     <footer id="marca-agua">
         Nombres: jose / Lautaro 

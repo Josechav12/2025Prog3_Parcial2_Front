@@ -94,11 +94,15 @@
         function mostrarProducto(producto) {
             console.table(producto);
             let htmlProducto = `
-                <li class="li-listados">
-                    <img src="${producto.imagen}" alt="${producto.nombre}">
-                    <p>Id: ${producto.id} / Nombre: ${producto.nombre} / <strong>Precio: ${producto.precio}</strong></p>
-                </li>
+                <img id="prod-img" src="${producto.imagen}" alt="${producto.nombre}">
+
+                <div id="prod-info">
+                    <p><strong>ID:</strong> ${producto.id}</p>
+                    <p><strong>Nombre:</strong> ${producto.nombre}</p>
+                    <p><strong>Precio:</strong> $${producto.precio}</p>
+                </div>
             `;
+
             listaProductos.innerHTML = htmlProducto;
         }
 

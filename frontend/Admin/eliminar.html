@@ -82,21 +82,22 @@
 
                 // Creamos un nuevo boton a nuestro listado de ver producto
                 let htmlProducto = `
-                    <li class="li-listados">
-                        <img src="${producto.imagen}" alt="${producto.nombre}">
-                        <p>Id: ${producto.id} / Nombre: ${producto.nombre} / <strong>Precio: ${producto.precio}</strong></p>
-                    </li>
-                    <li class="li-botonera">
-                        <input type="submit" id="deleteProduct_button" value="Eliminar producto">
-                    </li>
-                `;
+                    <img id="prod-img" src="${producto.imagen}" alt="${producto.nombre}">
 
+                    <div id="prod-info">
+                        <p><strong>ID:</strong> ${producto.id}</p>
+                        <p><strong>Nombre:</strong> ${producto.nombre}</p>
+                        <p><strong>Precio:</strong> $${producto.precio}</p>
+                    </div>
+
+                    <button id="prod-btn">Eliminar</button>
+                `;
                 // Renderizamos el listado en la pagina
                 listaProductos.innerHTML = htmlProducto;
 
 
                 // Vamos a asignarle un evento click a nuestro boton "Eliminar producto"
-                let deleteProduct_button = document.getElementById("deleteProduct_button");
+                let deleteProduct_button = document.getElementById("prod-btn");
 
                 deleteProduct_button.addEventListener("click", event => {
 
@@ -116,15 +117,14 @@
                     console.log(id); // Recibimos correctamente el id
 
                     try {
-                        let response = await fetch(`http://localhost:3000/products/${id}`, {
+                        let response = await fetch(`http://localhost:3000/api/products/${id}`, {
                             method: "DELETE"
                         });
 
                         let result = await response.json();
-
+s
                         if (response.ok) {
                             alert(result.message);
-
                             // Vaciamos la lista
                             listaProductos.innerHTML = "";
                         }

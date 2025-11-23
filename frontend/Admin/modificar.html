@@ -95,22 +95,22 @@
         // Recibe el producto y lo muestra por consola y por pantalla
         function mostrarProducto(producto) {
             console.table(producto);
+                let htmlProducto = `
+                    <img id="prod-img" src="${producto.imagen}" alt="${producto.nombre}">
 
-            let htmlProducto = `
-                <li class="li-listados">
-                    <img src="${producto.imagen}" alt="${producto.nombre}">
-                    <p>Id: ${producto.id} / Nombre: ${producto.nombre} / <strong>Precio: ${producto.precio}</strong></p>
-                </li>
-                <li class="li-botonera">
-                    <input type="submit" id="updateProduct_button" value="Actualizar producto">
-                </li>`;
+                    <div id="prod-info">
+                        <p><strong>ID:</strong> ${producto.id}</p>
+                        <p><strong>Nombre:</strong> ${producto.nombre}</p>
+                        <p><strong>Precio:</strong> $${producto.precio}</p>
+                    </div>
+
+                    <button id="prod-btn">Modificar</button>
+                `;
 
             listaProductos.innerHTML = htmlProducto;
 
             // Seleccionamos el boton de actualizar y le asignamos un evento
-            let updateProduct_button = document.getElementById("updateProduct_button");
-            
-            updateProduct_button.addEventListener("click", event => {
+            document.getElementById("prod-btn").addEventListener("click", event => {
                 formularioPutProducto(event, producto);
             });
         }
@@ -205,7 +205,6 @@
                 }
             });
         }
-
     </script>
     <footer id="marca-agua">
     Nombres: jose / Lautaro 
