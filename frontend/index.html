@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<!-- Head-->
+<head>
+    <title>Trabajo Práctico final Progra III</title>
+    <script defer src="./js/main.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<!-- Body -->
+<body>
+    <!-- Navegador -->
+    <nav>
+        <h3 id="nav-titulo">Electroniks</h3>
+        <h4 id="nav-nombre-alumno"></h4>
+        <div id="nav-barra-busqueda">
+            <label for="barra-busqueda">Buscar</label>
+            <input type="search" id="barra-busqueda"></input>
+        </div>
+        <div id="nav-items-carrito">
+            <h4 id="nav-contador-prod-carrito"></h4>
+            
+            <form id="boton-ver-carrito" action="./carrito.html" method="GET" autocomplete="off">
+                <input class="boton-ordenar" type="submit" value="Ver">
+            </form>
+        </div>
+    </nav>
+
+
+    <main>
+        <!-- Seccion de Titulo -->
+        <section id="contenedor-titulo">
+            <h1 id="titulo-seccion-productos">Nuestros productos</h1>
+            <button class="boton-ordenar" onClick="ordenarPorNombre()">Ordenar por nombre</button>
+            <button class="boton-ordenar" onClick="ordenarPorPrecio()">Ordenar por precio</button>
+        </section>
+
+        <!-- Secciones de contenedor y carrito -->
+        <section id="contenedor-productos"></section>
+    </main>
+    <footer>
+        <h3 id="footer-nombres">Jose / Lautaro </h3>
+    </footer>
+</body>

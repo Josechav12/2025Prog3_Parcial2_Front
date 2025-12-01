@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<!-- Head-->
+<head>
+    <title>Trabajo Práctico final Progra III</title>
+    <script defer src="./js/carrito.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<!-- Body -->
+<body>
+    <!-- Navegador -->
+    <nav>
+        <h3 id="nav-titulo">Electroniks</h3>
+        <div id="nav-items-carrito">
+            <form id="boton-ver-carrito" action="./index.html" method="GET" autocomplete="off">
+                <input class="boton-ordenar" type="submit" value="Volver">
+            </form>
+        </div>
+    </nav>
+
+
+    <main>
+        <div id="div-nombre-cliente">
+            <form id="campo-nombre-cliente" autocomplete="off">
+                <label for="nombre">Nombre cliente</label>
+                <input type="text" name="nombre" id="nombre" required>
+            </form>
+        </div>
+        <!-- Secciones de contenedor y carrito -->
+        <section id="contenedor-carrito"></section>
+    </main>
+    <footer>
+        <h3 id="footer-nombres">Jose / Lautaro </h3>
+    </footer>
+</body>
