@@ -3,7 +3,8 @@
 <!-- Head-->
 <head>
     <title>Trabajo Práctico final Progra III</title>
-    <script defer src="./js/carrito.js"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script defer src="./js/ticket.js"></script>
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 
@@ -13,18 +14,21 @@
     <nav>
         <h3 id="nav-titulo">Electroniks</h3>
         <div id="nav-items-carrito">
-            <form id="boton-ver-carrito" action="./index.html" method="GET" autocomplete="off">
-                <input class="boton-ordenar" type="submit" value="Volver">
-            </form>
+            <button id="volver-a-bienvenida" onclick="volverABienvenida()">Volver</button>
         </div>
     </nav>
 
-
     <main>
+        <div id="contenedor-titulo">
+            <h1>Gracias por su compra</h1>
+        </div>
+        
         <!-- Secciones de contenedor y carrito -->
-        <section id="contenedor-carrito"></section>
+        <section id="contenedor-ticket"></section>
     </main>
     <footer>
         <h3 id="footer-nombres">Jose / Lautaro </h3>
     </footer>
 </body>
+
+

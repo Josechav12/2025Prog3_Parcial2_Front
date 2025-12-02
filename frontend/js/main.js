@@ -91,13 +91,13 @@ function actualizarContadorCarrito(){
 /* Función para guardar el carrito en el localstorage.
 Lo guarda en formate texto con el nombre de "carrito" */
 function guardarCarritoEnLocalStorage(){
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+    sessionStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
 /* Carga el carrito desde el localstorage. Como este se encuentra
 en formato texto, luego hay que parsearlo a objeto JSON. */
 function cargarCarritoDesdeLocalStorage(){
-    let textoCarrito = localStorage.getItem("carrito");
+    let textoCarrito = sessionStorage.getItem("carrito");
 
     if (textoCarrito) {
         carrito = JSON.parse(textoCarrito);
@@ -125,14 +125,20 @@ async function obtenerProductos(){
     }
 }
 
+function checkUserSession(){
+    if(!sessionStorage.getItem("userName")){
+        window.location.href = "bienvenida.html"
+    }
+}
+
 /* Función que llama a todas la funciones necesariar para mostra la página por primera vez. */
 async function init(){
     /* Se crea el array de productos con los campos requeridos */
-
     productos = await obtenerProductos();
     mostrarProductos(productos);
     cargarCarritoDesdeLocalStorage();
     actualizarContadorCarrito();
 }
 
+checkUserSession();
 init();

@@ -61,6 +61,12 @@ input[type="submit"]:hover {
     background-color: var(--color-button-hover);
 }
 
+#bienvenida-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #nav-titulo {
     padding-left: 20px;
 }
@@ -177,4 +183,12 @@ input[type="submit"]:hover {
 /* Hover uniforme para ambos botones */
 #login-form input[type="button"]:hover {
     background-color: var(--color-button-hover);
+}
+
+#contenedor-ticket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    margin: 20px;
 }

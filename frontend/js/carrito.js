@@ -45,7 +45,7 @@ function vaciarCarrito(){
 /* Carga el carrito desde el localstorage. Como este se encuentra
 en formato texto, luego hay que parsearlo a objeto JSON. */
 function cargarCarritoDesdeLocalStorage(){
-    let textoCarrito = localStorage.getItem("carrito");
+    let textoCarrito = sessionStorage.getItem("carrito");
 
     if (textoCarrito) {
         carrito = JSON.parse(textoCarrito);
@@ -55,7 +55,7 @@ function cargarCarritoDesdeLocalStorage(){
 /* Función para guardar el carrito en el localstorage.
 Lo guarda en formate texto con el nombre de "carrito" */
 function guardarCarritoEnLocalStorage(){
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+    sessionStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
 /* Esta función introduce html en la sección contenedor-carrito.
@@ -88,10 +88,6 @@ function mostrarCarrito(){
     }
 }
 
-function mostrarAgradecimiento() {
-    contenedorCarrito.innerHTML = `<h1>Gracias por su compra</h1>`;
-}
-
 function calcularPrecioTotal() {
     let precioTotal = 0;
     precioTotal = carrito.reduce((precioTotal, item) => { return precioTotal + item.precio;}, 0);
@@ -113,15 +109,9 @@ function eliminarProducto(idProducto){
 
 async function comprar() {
 
-    let comprarProductos_form = document.getElementById("campo-nombre-cliente");
+    let data = {}
 
-    let formData = new FormData(comprarProductos_form);
-    let data = Object.fromEntries(formData.entries());
-
-    if (!nombre) {
-        
-    }
-
+    data['nombre'] = sessionStorage.getItem("userName");
     data['precio'] = calcularPrecioTotal();
     data['productos'] = [];
 
@@ -139,17 +129,13 @@ async function comprar() {
         body: JSON.stringify(data)
     });
 
-    console.log(respuesta);
-    
     data = await respuesta.json();
     console.log(data)
 
     if (respuesta.ok) {
         console.log(data.message);
 
-        vaciarCarrito();
-        mostrarAgradecimiento();
-        return data;
+        window.location.href = "ticket.html"
 
     } else {
         alert("Error creando ticket")
@@ -157,14 +143,18 @@ async function comprar() {
     }
 
 }
+function checkUserSession(){
+    if(!sessionStorage.getItem("userName")){
+        window.location.href = "bienvenida.html"
+    }
+}
 
 /* Función que llama a todas la funciones necesariar para mostra la página por primera vez. */
-async function initBienvenida(){
-    /* Se crea el array de productos con los campos requeridos */
-
+async function initCarrito(){
     productos = await obtenerProductos();
     cargarCarritoDesdeLocalStorage();
     mostrarCarrito();
 }
 
-initBienvenida();
+checkUserSession();
+initCarrito();
